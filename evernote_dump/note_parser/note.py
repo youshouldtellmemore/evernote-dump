@@ -50,6 +50,9 @@ class Note(object):
     def add_found_attribute(self, attr, dataline):
         self._attributes.append([attr, dataline])
 
+    def append_title(self, text):
+        self._title = str(self._title) + text
+
     def append_html(self, text):
         self._html = str(self._html) + text
 
@@ -175,6 +178,7 @@ class Note(object):
         self._markdown += tags
 
     def finalize(self):
+        self.create_filename()
         self.create_markdown()
 
     def get_created_date(self):
@@ -207,6 +211,3 @@ class Note(object):
     def set_path(self, path):
         self._path = path
 
-    def set_title(self, title):
-        self._title = title
-        self.create_filename()

@@ -80,7 +80,7 @@ class NoteParser(ContentHandler):
     def characters(self, content_stream):
         """Content Stream"""
         if self.CurrentData == "title":
-            self.note.set_title(content_stream)
+            self.note.append_title(content_stream)
         elif self.CurrentData == "content":
             self.note.append_html(content_stream)
         elif self.CurrentData == "created":

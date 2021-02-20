@@ -15,6 +15,13 @@ class TestEvernoteDump(unittest.TestCase):
 
     # TODO: Add test for preserved file names
 
+    def test_run_parse_filename_match_note_title(self):
+        self.s.files = ['data/Recipes.enex', ]
+        self.s.n = True
+        dump.run_parse(self.s)
+        self.assertTrue(os.path.isfile(("Recipes/Healthy Recipe From Joy Bauer's Food Cures Light Balsamic Vinaigrette.md")))
+        shutil.rmtree('Recipes')
+
     def test_run_parse_single_file_with_out_overwrite(self):
         self.s.files = ['data/Archives.enex']
         dump.run_parse(self.s)
